@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mullai | Data Science Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* General */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, #0d0d0d, #1c1c1c);
+      padding: 0.8rem 1rem;
+    }
+    .navbar-brand {
+      font-size: 1.6rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: #fff !important;
+    }
+    .nav-link {
+      color: #bbb !important;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      color: #fff !important;
+    }
+
+    /* Hero Section */
+    .home-section {
+      height: 100vh;
+      background: url("images/Background/Bck_1.jpg") no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+    }
+    .home-section::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .home-content {
+      z-index: 10;
+    }
+    .home-content h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .home-content h2 {
+      font-size: 1.75rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+  /* Neon Buttons for Projects Section */
+  #projects .btn-source,
+  #projects .btn-primary,
+  #projects .btn-outline-secondary {
+    background: transparent;                 
+    color: #ffffff;                         
+    border: 2px solid #ffffff;              
+    padding: 0.6rem 1.5rem;
+    border-radius: 12px;                    
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    text-decoration: none !important;       
+    display: inline-block;                  
+  }
+
+  #projects .btn-source:hover,
+  #projects .btn-primary:hover,
+  #projects .btn-outline-secondary:hover {
+    background: #040404;                    
+    color: #fff !important;                 
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(0,180,216,0.9);
+    text-decoration: none !important;       
+  }
+
+  /* Hero Section Buttons - keep Bootstrap look */
+  .btn-hero {
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0.3rem;
+  }
+
+  .btn-hero.btn-primary {
+    background: #0d6efd;
+    border: none;
+  }
+
+  .btn-hero.btn-outline-light {
+    border: 2px solid #fff;
+    color: #fff;
+  }
+
+  .btn-hero.btn-outline-light:hover {
+    background: #fff;
+    color: #000;
+  }
+    /* About */
+    #about {
+    min-height: 100vh;       /* full screen height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 15%;          /* control page width like front */
+    background: #ffffff;     /* background */
+    text-align: center;
+    }
+    #about h2 {
+      color: #ffffff;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    #about p {
+      color: #ffffff;
+      font-size: 1.1rem;
+    }
+
+    /* Projects */
+    #projects {
+      padding: 100px 0;
+      background: #000000;
+    }
+    #projects h2 {
+      color: #ffffff;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+    .card {
+    background: #111;       /* black card background */
+    color: #fff;            /* white text inside card */
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(255,255,255,0.1); /* light shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(255,255,255,0.2); /* brighter shadow on hover */
+    }
+
+    .card-title {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #fff;            /* force white for titles */
+    }
+
+    .card-text {
+    font-size: 0.95rem;
+    color: #ddd;            /* softer white/gray for body text */
+    }
+
+    /* Skills */
+    .skills-section {
+      padding: 100px 0;
+      background: #ffffff;
+      text-align: center;
+    }
+    .skills-section h2 {
+      color: #ffffff;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+    .badge {
+      font-size: 0.95rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 20px;
+      margin: 5px;
+      background: linear-gradient(135deg, #007bff, #00b4d8);
+      color: #fff;
+      font-weight: 500;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    .tools-container {
+    display: flex;
+    flex-wrap: wrap;          /* allows items to wrap to next line */
+    gap: 12px 18px;           /* row gap (12px) and column gap (18px) */
+    justify-content: center;  /* center items horizontally */
+    margin-top: 1rem;
+  }
+
+    /* Contact */
+    .contact-section {
+      background: #000000;
+      color: #fff;
+      padding: 80px 0;
+      text-align: center;
+    }
+    .contact-section h2 {
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+    .btn-circle {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+    }
+    .btn-circle img {
+      width: 28px;
+      height: 28px;
+    }
+    .btn-circle:hover {
+      transform: scale(1.15);
+      background: #484848;
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Common full-page layout */
+    .section-fullpage {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 0 12%;
+      background: #111;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">My Data Science Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="home-section" id="home">
+    <div class="home-content">
+      <h1>Hi, I'm Mullai</h1>
+      <h2>Welcome to My Data science Portfolio!</h2>
+      <a href="#projects" class="btn btn-primary btn-hero">View My Work</a>
+      <a href="#contact" class="btn btn-outline-light btn-hero">Contact Me</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section-fullpage" style="background:#000000;">
+    <div class="container">
+      <h2>About Me</h2>
+      <img src="images/about/about.jpg" alt="Profile" class="rounded-circle mb-4" width="150" height="150">
+      <p>As an aspiring data scientist, I am driven by the transformative potential of data and technology to create meaningful solutions. My professional journey is characterized by a relentless pursuit of innovation, specializing in data analysis, visualization, machine learning, Deep Learning, and Generative AI. </p>
+      <p>I am dedicated to leveraging data science as a powerful tool for solving real-world problems and driving impactful technological advancements. I approach every project with a mindset of continuous learning and strategic experimentation, seeking to consistently improve my skills and contribute to innovative solutions.</p>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="text-center">Projects</h2>
+      <div class="row mt-4">
+        <!--Project 1-->
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100">
+            <img src="images/Projects/AI_chatbot.png" class="card-img-top" alt="Chatbot">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Flipkart E-Commerce Chatbot</h5>
+              <p class="card-text">Developed an AI-powered customer support chatbot using LLaMA 3.3 for intent classification, ChromaDB for FAQ retrieval, and SQLite for real-time product data.</p>
+              <div class="mt-auto">
+                <a href="https://generativeai-e-com-chat-bot.streamlit.app/" class="btn btn-sm btn-primary me-2">View Project</a>
+                <a href="https://github.com/Mullaivendan9894/Generative_AI/tree/master/E-commerce_chat_bot" class="btn btn-outline-secondary btn-sm">Source Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Project 2 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100">
+            <img src="images/Projects/Pdf_Chatbot_1.png" class="card-img-top" alt="Chatbot">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Document Intelligence RAG System</h5>
+              <p class="card-text">Built an AI chatbot for querying PDF documents using a LangChain RAG pipeline, LLaMA 3.3, and ChromaDB, achieving 95% retrieval accuracy with low latency.</p>
+              <div class="mt-auto">
+                <a href="https://conversational-rag-chatbot-v1.streamlit.app/" class="btn-source">View Project</a>
+                <a href="https://github.com/Mullaivendan9894/Generative_AI/tree/master/Conversational_RAG_Chatbot" class="btn-source">Source Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Project 3 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100">
+            <img src="images/Projects/car_damage.png" class="card-img-top" alt="Chatbot">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Car Damage Classifier</h5>
+              <p class="card-text">Developed a ResNet50 CNN model to classify car damage, achieving 77.91% accuracy through fine-tuning and data augmentation for an automated damage detection system.</p>
+              <div class="mt-auto">
+                <a href="https://car-damage-classifier.streamlit.app/" class="btn btn-sm btn-primary me-2">View Project</a>
+                <a href="https://github.com/Mullaivendan9894/Deep-Learning/tree/master/car_damage_classifier" class="btn btn-outline-secondary btn-sm">Source Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Project 4 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100">
+            <img src="images/Projects/credit_score.png" class="card-img-top" alt="Chatbot">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Credit Risk Prediction Model</h5>
+              <p class="card-text">Built an interpretable Logistic Regression model for credit risk prediction, achieving a 98.4% AUC and using SMOTE-Tomek to improve the detection of high-risk applicants.</p>
+              <div class="mt-auto">
+                <a href="https://loan-default-classifier.streamlit.app/" class="btn btn-sm btn-primary me-2">View Project</a>
+                <a href="https://github.com/Mullaivendan9894/Machine-Learning/tree/master/loan-default-prediction" class="btn btn-outline-secondary btn-sm">Source Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Project 5 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100">
+            <img src="images/Projects/health_insurance.png" class="card-img-top" alt="Chatbot">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Health Insurance Cost Predictor</h5>
+              <p class="card-text">Built an interpretable Logistic Regression model for credit risk prediction, achieving a 98.4% AUC and using SMOTE-Tomek to improve the detection of high-risk applicants.</p>
+              <div class="mt-auto">
+                <a href="https://premium-health-insurance-cost-predictor.streamlit.app/" class="btn btn-sm btn-primary me-2">View Project</a>
+                <a href="https://github.com/Mullaivendan9894/Machine-Learning/tree/master/health_insurance_cost_predictor" class="btn btn-outline-secondary btn-sm">Source Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills"  class="section-fullpage" style="background:#000000;">
+    <div class="container">
+      <h2>Skills</h2>
+        <span class="badge text-bg-primary m-2">Python Programming</span>
+        <span class="badge text-bg-primary m-2">SQL</span>
+        <span class="badge text-bg-primary m-2">Inferential Statistics</span>
+        <span class="badge text-bg-primary m-2">Descriptive Statistics</span>
+        <span class="badge text-bg-primary m-2">Machine Learning</span>
+        <span class="badge text-bg-primary m-2">Deep Learning</span>
+        <span class="badge text-bg-primary m-2">Data Cleaning</span>
+        <span class="badge text-bg-primary m-2">Feature Engineering</span>
+        <span class="badge text-bg-primary m-2">EDA</span>
+        <span class="badge text-bg-primary m-2">Data Visualization</span>
+        <span class="badge text-bg-primary m-2">MLOps</span>
+        <span class="badge text-bg-primary m-2">Generative AI</span>
+        <span class="badge text-bg-primary m-2">Data Storytelling</span>
+        <span class="badge text-bg-primary m-2">Communication Skills</span>
+    </div>
+
+    <!-- Tools and Technologies Subsection -->
+      <h2 class="mt-5 mb-4">Tools and Technologies</h2>
+      <div class="tools-container">
+        <!-- Programming Languages -->
+        <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+        <img src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQL">
+
+        <!-- ML Libraries -->
+        <img src="https://img.shields.io/badge/Scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-learn">
+        <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow">
+        <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch">
+        <img src="https://img.shields.io/badge/NLTK-026CB6?style=for-the-badge&logo=python&logoColor=white" alt="NLTK">
+        <img src="https://img.shields.io/badge/LangChain-0A66C2?style=for-the-badge&logo=chainlink&logoColor=white" alt="LangChain">
+        <img src="https://img.shields.io/badge/Hugging%20Face-F3D3D3?style=for-the-badge&logo=huggingface&logoColor=black" alt="Hugging Face">
+
+        <!-- Data Manipulation -->
+        <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas">
+        <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy">
+
+        <!-- Data Visualization -->
+        <img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=python&logoColor=white" alt="Matplotlib">
+        <img src="https://img.shields.io/badge/Seaborn-4C8D8A?style=for-the-badge&logo=python&logoColor=white" alt="Seaborn">
+
+        <!-- Business Intelligence -->
+        <img src="https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=power-bi&logoColor=black" alt="Power BI">
+        <img src="https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white" alt="Azure">
+        <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit">
+        <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+      </div>
+    </div>
+  </section>
+
+  </section>
+
+  <!-- Contact Me Section -->
+<section id="contact" class="contact-section text-center py-5">
+    <div class="container">
+      <h2 class="mb-4">Contact Me</h2>
+      <div class="d-flex justify-content-center flex-wrap">
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/mullai-vendan-206580183/" target="_blank" class="btn btn-circle btn-pink mx-3 mb-3" data-bs-toggle="tooltip" data-bs-title="LinkedIn">
+          <img src="images/icons/icons8-linkedin-240.png" alt="LinkedIn" class="icon-img">
+        </a>
+        <!-- GitHub -->
+        <a href="https://github.com/Mullaivendan9894" target="_blank" class="btn btn-circle btn-pink mx-3 mb-3" data-bs-toggle="tooltip" data-bs-title="GitHub">
+          <img src="images/icons/icons8-github-144.png" alt="GitHub" class="icon-img">
+        </a>
+        <!-- Email -->
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mullaimuruganandam@gmail.com" 
+        target="_blank" 
+        class="btn btn-circle btn-pink mx-3 mb-3" 
+        data-bs-toggle="tooltip" 
+        data-bs-title="Email">
+        <img src="images/icons/Email_new.png" alt="Email" class="icon-img">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
